@@ -38,12 +38,10 @@ namespace HobbyListAPI.Controllers
 
         // POST: api/book
         [HttpPost]
-        public async Task<ActionResult<Book>> AddBook(Book newBook)
+        public async Task<ActionResult<Book>> AddBook([FromBody] Book newBook)
         {
-            if (string.IsNullOrWhiteSpace(newBook.Title))
-                return BadRequest("Le titre du livre est obligatoire.");
-            if (newBook.Price <= 0)
-                return BadRequest("Le prix du livre doit être supérieur à 0.");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             _context.Books.Add(newBook);
             await _context.SaveChangesAsync();
@@ -53,10 +51,13 @@ namespace HobbyListAPI.Controllers
 
         // PUT: api/book/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
+        public async Task<IActionResult> UpdateBook(int id, [FromBody] Book updatedBook)
         {
             if (id != updatedBook.Id)
                 return BadRequest("L'ID du livre ne correspond pas.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var book = await _context.Books.FindAsync(id);
             if (book == null)
