@@ -16,6 +16,7 @@ namespace HobbyListAPI.Controllers
             _context = context;
         }
 
+        #region GET
         // GET: api/book
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetAllBooks()
@@ -36,6 +37,20 @@ namespace HobbyListAPI.Controllers
             return Ok(book);
         }
 
+
+        // GET: api/book/sorted
+        [HttpGet("sorted")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBooksSortedByDate(bool ascending = false)
+        {
+            var books = ascending
+                ? await _context.Books.OrderBy(b => b.PurchaseDate).ToListAsync()
+                : await _context.Books.OrderByDescending(b => b.PurchaseDate).ToListAsync();
+
+            return Ok(books);
+        }
+        #endregion
+
+        #region POST/PUT/DELETE
         // POST: api/book
         [HttpPost]
         public async Task<ActionResult<Book>> AddBook([FromBody] Book newBook)
@@ -88,5 +103,6 @@ namespace HobbyListAPI.Controllers
 
             return NoContent();
         }
+        #endregion
     }
 }
