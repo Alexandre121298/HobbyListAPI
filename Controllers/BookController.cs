@@ -51,7 +51,6 @@ namespace HobbyListAPI.Controllers
             return CreatedAtAction(nameof(GetBook), new { id = newBook.Id }, newBook);
         }
 
-
         // PUT: api/book/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
@@ -66,11 +65,13 @@ namespace HobbyListAPI.Controllers
             book.Title = updatedBook.Title;
             book.PurchaseDate = updatedBook.PurchaseDate;
             book.Price = updatedBook.Price;
+            book.Status = updatedBook.Status;
 
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
+
 
 
         // DELETE: api/book/{id}

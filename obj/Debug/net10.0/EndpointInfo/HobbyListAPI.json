@@ -211,9 +211,20 @@
           "price": {
             "type": "number",
             "format": "double"
+          },
+          "status": {
+            "$ref": "#/components/schemas/BookStatus"
           }
         },
         "additionalProperties": false
+      },
+      "BookStatus": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   }

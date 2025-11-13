@@ -17,21 +17,25 @@ namespace HobbyListAPI.Data
                 {
                     Title = "The Hobbit",
                     PurchaseDate = DateTime.SpecifyKind(new DateTime(2025, 11, 1), DateTimeKind.Utc),
-                    Price = 15.99M
+                    Price = 15.99M,
+                    Status = BookStatus.ToBuy
                 },
                 new Book
                 {
                     Title = "1984",
                     PurchaseDate = DateTime.SpecifyKind(new DateTime(2025, 10, 15), DateTimeKind.Utc),
-                    Price = 12.50M
+                    Price = 12.50M,
+                    Status = BookStatus.Purchased
                 },
                 new Book
                 {
                     Title = "Dune",
                     PurchaseDate = DateTime.SpecifyKind(new DateTime(2025, 9, 20), DateTimeKind.Utc),
-                    Price = 20.00M
+                    Price = 20.00M,
+                    Status = BookStatus.ToBuy
                 }
             };
+
 
 
 
