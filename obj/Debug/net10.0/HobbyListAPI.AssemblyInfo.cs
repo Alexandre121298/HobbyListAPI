@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HobbyListAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3acce693e388e6109866de9df0798eafdad16aef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6306dc54283a995025bc68351c98f11e186b3a42")]
 [assembly: System.Reflection.AssemblyProductAttribute("HobbyListAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HobbyListAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
