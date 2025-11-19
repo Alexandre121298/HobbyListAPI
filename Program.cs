@@ -11,7 +11,8 @@ builder.Logging.AddDebug();
 
 // Ajouter le DbContext avec PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(Environment.GetEnvironmentVariable("DefaultConnection")));
+
 
 // Add services to the container.
 
