@@ -4,12 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
+
 // Logging par défaut (console + debug)
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
 // Ajouter le DbContext avec PostgreSQL
+Console.WriteLine("ENV CONNECTION STRING = " + Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection"));
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("DefaultConnection")));
 
